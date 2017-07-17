@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BookListingApp</string>
+    <string name="noBook">No book found.</string>
+    <string name="loading">Loading...</string>
+    <string name="maxResults">&amp;maxResults=20</string>
+    <string name="title">Title : </string>
+    <string name="authors">Authors : </string>
+    <string name="complete">Complete the field</string>
+</resources>
