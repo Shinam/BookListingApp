@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by Shinam on 15/07/2017.
  */
@@ -24,29 +27,31 @@ public class BookAdapter extends ArrayAdapter<Book> {
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.list_item, parent, false);
-        }
-
-        EventViewHolder viewHolder = (EventViewHolder) convertView.getTag();
-
-        if (viewHolder == null) {
-            viewHolder = new EventViewHolder();
-            viewHolder.title = (TextView) convertView.findViewById(R.id.title);
-            viewHolder.author = (TextView) convertView.findViewById(R.id.author);
-            convertView.setTag(viewHolder);
+        ViewHolder holder;
+        if (convertView != null) {
+            holder = (ViewHolder) convertView.getTag();
+        } else {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
+            holder = new ViewHolder(convertView);
+            convertView.setTag(holder);
         }
 
         Book currentBook = getItem(position);
 
-        viewHolder.title.setText(currentBook.getTitle());
-        viewHolder.author.setText(currentBook.getAuthors());
+        holder.title.setText(currentBook.getTitle());
+        holder.author.setText(currentBook.getAuthors());
+
         return convertView;
     }
 
-    private class EventViewHolder {
-        public TextView title;
-        public TextView author;
+    static class ViewHolder {
+        @BindView(R.id.title)
+        TextView title;
+        @BindView(R.id.author)
+        TextView author;
+
+        public ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 }
