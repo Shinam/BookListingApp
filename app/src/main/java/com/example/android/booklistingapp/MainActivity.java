@@ -29,12 +29,9 @@ public class MainActivity extends AppCompatActivity {
                 search = research.getText().toString();
                 if (search.isEmpty()) {
                     Toast.makeText(MainActivity.this, getString(R.string.complete), Toast.LENGTH_SHORT).show();
-                }
-                else if(!checkNetworkConnection())
-                {
+                } else if (!checkNetworkConnection()) {
                     Toast.makeText(MainActivity.this, getString(R.string.noInternet), Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Intent intent = new Intent(MainActivity.this, Results.class);
                     intent.putExtra("ss", search);
                     startActivity(intent);

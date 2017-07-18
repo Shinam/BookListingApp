@@ -60,8 +60,8 @@ public class Results extends AppCompatActivity implements LoaderManager.LoaderCa
             if (urls.length < 1 || urls[0] == null) {
                 return null;
             }
-                List<Book> result = Utils.fetchBookData(urls[0]);
-                return result;
+            List<Book> result = Utils.fetchBookData(urls[0]);
+            return result;
         }
 
         @Override
@@ -70,7 +70,7 @@ public class Results extends AppCompatActivity implements LoaderManager.LoaderCa
                 mEmptyStateTextView.setText(R.string.noBook);
                 return;
             }
-                updateUi(result);
+            updateUi(result);
         }
     }
 
